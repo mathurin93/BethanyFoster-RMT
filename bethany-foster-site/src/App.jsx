@@ -76,17 +76,6 @@ const DETAILED_SERVICES = [
       "60 minutes",
       "An additional $10 per treatment"
     ]
-  },
-  {
-    title: "Indie Head Massage Therapy",
-    image: "https://images.unsplash.com/photo-1544161514-3a2512fcefb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Indie head massage therapy is an ancient practice used across cultures for thousands of years. By applying gentle pressure and manipulating the muscles and tissues of the head, neck, and shoulders, this massage enhances circulation and promotes natural healing.",
-    pricing: [
-      "30 minutes",
-      "45 minutes",
-      "60 minutes",
-      "An additional $10 per treatment"
-    ]
   }
 ];
 
@@ -204,7 +193,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page.jpg`} 
+          src={`${BASE}home-page-v1.jpg`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -222,7 +211,7 @@ const Home = ({ navigateTo }) => {
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
           <Reveal className="order-last md:order-first aspect-[4/5] overflow-hidden bg-gray-200 w-full translate-y-[1px] mt-8 md:mt-0">
             <img 
-              src={`${BASE}bethany-profile-v2.png`} 
+              src={`${BASE}bethany-foster-v3.png`} 
               alt="Bethany Foster" 
               className="w-full h-full object-cover object-top md:object-bottom"
             />
@@ -306,7 +295,7 @@ const About = ({ navigateTo }) => (
       <div className="flex flex-col md:flex-row relative">
           <Reveal className="w-full md:w-1/2 aspect-square md:aspect-[3/4] z-0 shadow-lg">
                <img 
-                  src={`${BASE}bethany-profile-v2.png`} 
+                  src={`${BASE}bethany-foster-v3.png`} 
                   alt="Bethany Foster" 
                   className="w-full h-full object-cover"
                 />
