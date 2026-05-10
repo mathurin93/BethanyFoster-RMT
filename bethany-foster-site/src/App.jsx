@@ -63,18 +63,22 @@ const BASE = window.location.hostname === 'localhost' || window.location.hostnam
 const SERVICES_SLIDES = [
   {
     title: 'Registered Massage Therapy',
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+    image: `${BASE}massage.png`
   },
   {
     title: 'Cupping Therapy',
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+    image: `${BASE}cupping.jpeg`
+  },
+  {
+    title: 'Facial Massage Therapy',
+    image: `${BASE}facial.png`
   }
 ];
 
 const DETAILED_SERVICES = [
   {
     title: "Registered Massage Therapy",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: `${BASE}massage.png`,
     description: "Massage therapy is an ancient practice used across cultures for thousands of years. By applying pressure and manipulating the muscles and tissues, massage enhances circulation and promotes natural healing.",
     pricing: [
       "30min- $80.00",
@@ -88,7 +92,7 @@ const DETAILED_SERVICES = [
   },
   {
     title: "Cupping Therapy",
-    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: `${BASE}cupping.jpeg`,
     description: "Cupping therapy is an ancient practice used for thousands of years. By creating a vacuum effect, the cups lift the skin and tissues, enhancing circulation, movement, and promoting deep relief of pain and tension.",
     pricing: [
       "60 minutes",
@@ -99,7 +103,7 @@ const DETAILED_SERVICES = [
   },
   {
     title: "Facial Massage Therapy",
-    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: `${BASE}facial.png`,
     description: "Facial massage therapy uses gentle pressure that manipulates the facial muscles to enhance circulation, reduce tension, and promote deep relaxation. Great for TMJ and Headaches.",
     pricing: [
       "30 minutes",
@@ -359,7 +363,7 @@ const About = ({ navigateTo }) => (
         <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0 md:mt-[15%] order-first md:order-last">
                <img 
-                  src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                  src={`${BASE}massage.png`} 
                   alt="Spa Setting" 
                   className="w-full aspect-[4/3] object-cover shadow-md"
                 />
@@ -382,9 +386,9 @@ const About = ({ navigateTo }) => (
 );
 
 const Services = () => (
-  <div className="animate-fadeIn pb-24 overflow-hidden bg-[#FFFFFF]">
+  <div className="animate-fadeIn pb-24 overflow-hidden bg-[#D0D0D0]">
     {/* Hero-like Top Section - Container background #D0D0D0 */}
-    <div className="bg-[#D0D0D0] py-32 px-6 text-center text-[#414141]">
+    <div className="bg-[#D0D0D0] pt-32 pb-16 px-6 text-center text-[#414141]">
       <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-8 drop-shadow-sm">Therapeutic Approach</h1></Reveal>
       <Reveal delay={200}>
           <p className="max-w-3xl mx-auto font-sans text-[16px] leading-[1.6] text-[#414141] mb-12">
@@ -395,30 +399,30 @@ const Services = () => (
     </div>
 
     {/* Services List Area */}
-    <div className="bg-[#FFFFFF] py-24 text-center px-4">
+    <div className="bg-[#D0D0D0] py-16 md:py-24 text-center px-4">
       <Reveal><h2 className="font-serif text-5xl md:text-[52px] font-bold text-[#6E97B8] mb-8">Services</h2></Reveal>
       <Reveal delay={200}>
-          <p className="font-serif text-xl text-[#0A0A0A] max-w-2xl mx-auto mb-20 leading-relaxed">
+          <p className="font-serif text-xl text-[#0A0A0A] max-w-2xl mx-auto mb-24 leading-relaxed">
             Please Note: Fees for RMT service have been updated as of November 13th, 2025<br/>
             Thank you for your continued support!
           </p>
       </Reveal>
 
-      {/* 2-Column Grid with Horizontal Cards */}
-      <div className="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-8 px-2 md:px-6 text-left">
+      {/* Single Column Stacked Layout */}
+      <div className="max-w-6xl mx-auto flex flex-col gap-24 px-2 md:px-6">
          {DETAILED_SERVICES.map((srv, i) => (
-            <Reveal key={i} delay={i % 2 === 0 ? 0 : 200} className="bg-[#D0D0D0] flex flex-col xl:flex-row items-stretch shadow-sm">
-                {/* Image takes up half the card on large screens */}
-                <div className="w-full xl:w-1/2 h-64 xl:h-auto relative">
-                    <img src={srv.image} alt={srv.title} className="absolute inset-0 w-full h-full object-cover" />
+            <Reveal key={i} delay={200} className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
+                {/* Image top left (full image, no strict crop) */}
+                <div className="w-full md:w-1/2">
+                    <img src={srv.image} alt={srv.title} className="w-full h-auto object-contain" />
                 </div>
-                {/* Text takes up the other half */}
-                <div className="w-full xl:w-1/2 p-8 lg:p-10 flex flex-col justify-center items-center text-center">
-                    <h3 className="font-serif text-xl font-bold mb-4 text-[#0A0A0A]">{srv.title}</h3>
-                    <p className="font-sans text-[15px] leading-[1.6] text-[#6E97B8] mb-8">
+                {/* Text right, pricing bottom */}
+                <div className="w-full md:w-1/2 py-2 flex flex-col justify-center items-center text-center">
+                    <h3 className="font-serif text-[28px] md:text-[32px] font-normal mb-8 text-[#1a1a1a]">{srv.title}</h3>
+                    <p className="font-serif text-[18px] md:text-[20px] leading-[1.8] text-[#6E97B8] mb-12 max-w-md">
                         {srv.description}
                     </p>
-                    <div className="font-sans text-[16px] leading-[1.6] text-[#414141] space-y-1 mb-10">
+                    <div className="font-serif text-[18px] md:text-[20px] leading-[1.8] text-[#1a1a1a] space-y-2 mb-12">
                         {srv.pricing.map((line, idx) => (
                             <p key={idx}>{line}</p>
                         ))}
