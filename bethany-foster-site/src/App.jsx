@@ -76,6 +76,17 @@ const DETAILED_SERVICES = [
       "60 minutes",
       "An additional $10 per treatment"
     ]
+  },
+  {
+    title: "Indie Head Massage Therapy",
+    image: "https://images.unsplash.com/photo-1544161514-3a2512fcefb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    description: "Indie head massage therapy is an ancient practice used across cultures for thousands of years. By applying gentle pressure and manipulating the muscles and tissues of the head, neck, and shoulders, this massage enhances circulation and promotes natural healing.",
+    pricing: [
+      "30 minutes",
+      "45 minutes",
+      "60 minutes",
+      "An additional $10 per treatment"
+    ]
   }
 ];
 
@@ -193,38 +204,38 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v2.png`} 
+          src={`${BASE}home-page-v1.jpg`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Increased White Opacity (bg-white/50) */}
-        <div className="absolute inset-0 bg-white/50 pointer-events-none"></div>
+        {/* Crisp Hero Overlay: Increased opacity to 70%, removed blur-causing drop-shadows */}
+        <div className="absolute inset-0 bg-white/70 pointer-events-none"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-4 drop-shadow-sm">Relax, Restore, Renew</h1></Reveal>
-          <Reveal delay={200}><p className="text-[#6E97B8] tracking-[0.2em] text-[16px] uppercase mb-8 font-bold drop-shadow-sm">Bethany Foster RMT</p></Reveal>
-          <Reveal delay={400}><Button href={BOOKING_LINK}>Book Online</Button></Reveal>
+          <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-4">Relax, Restore, Renew</h1></Reveal>
+          <Reveal delay={200}><p className="text-[#6E97B8] tracking-[0.2em] text-[16px] uppercase mb-8 font-bold">Bethany Foster RMT</p></Reveal>
+          <Reveal delay={400}><Button href={BOOKING_LINK} className="hidden md:inline-block">Book Online</Button></Reveal>
         </div>
       </section>
 
-      {/* Intro Section - Full width bg, profile image flush with bottom container */}
-      <section className="w-full bg-[#EAEAEA] pt-24 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-          <Reveal className="order-last md:order-first aspect-[4/5] overflow-hidden bg-gray-200 w-full translate-y-[1px] mt-8 md:mt-0">
+      {/* Intro Section - Restructured for perfect mobile stacking */}
+      <section className="w-full bg-[#EAEAEA] pt-12 md:pt-24 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
+          <Reveal className="w-full aspect-[4/5] overflow-hidden bg-gray-200">
             <img 
-              src={`${BASE}bethany-foster-v3.png`} 
+              src={`${BASE}bethany-foster-v4.png`} 
               alt="Bethany Foster" 
               className="w-full h-full object-cover object-top md:object-bottom"
             />
           </Reveal>
-          <div className="order-first md:order-last pl-0 md:pl-12 pb-0 md:pb-24">
+          <div className="w-full pb-12 md:pb-24">
             <Reveal delay={100}><h2 className="font-serif text-4xl md:text-[44px] font-medium mb-8 text-[#414141]">Bethany Foster,<br/>Registered Massage<br/>Therapist</h2></Reveal>
             <div className="space-y-6 font-sans text-[#414141] text-[16px] leading-[1.6] mb-10">
               <Reveal delay={200}><p>Welcome to my website!</p></Reveal>
               <Reveal delay={300}><p>I am a passionate and dedicated Registered Massage Therapist (RMT) committed to helping you achieve relaxation, pain relief, and overall well-being through the art of massage therapy.</p></Reveal>
             </div>
-            <Reveal delay={400} className="flex flex-wrap gap-4">
-              <Button onClick={() => navigateTo('about')} className="bg-[#6E97B8] hover:bg-opacity-90">Learn More</Button>
-              <Button href={BOOKING_LINK} className="bg-[#6E97B8] hover:bg-opacity-90">Book An Appointment</Button>
+            <Reveal delay={400} className="flex flex-col md:flex-row gap-4 w-full">
+              <Button onClick={() => navigateTo('about')} className="w-full md:w-auto">Learn More</Button>
+              <Button href={BOOKING_LINK} className="w-full md:w-auto">Book An Appointment</Button>
             </Reveal>
           </div>
         </div>
@@ -233,28 +244,35 @@ const Home = ({ navigateTo }) => {
       {/* Services Carousel */}
       <section className="bg-[#D0D0D0] py-24 text-center overflow-hidden">
         <Reveal><SectionTitle className="text-[#0A0A0A]">Services</SectionTitle></Reveal>
-        <Reveal delay={200} className="max-w-5xl mx-auto relative px-12 md:px-24 mt-12">
+        
+        <Reveal delay={200} className="relative mx-auto w-full md:max-w-5xl px-4 md:px-24 mt-12 flex flex-col md:block">
           
-          <button onClick={prevSlide} className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10">
+          <button onClick={prevSlide} className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10">
             <ChevronLeft size={48} strokeWidth={1} />
           </button>
           
-          <div className="relative aspect-[16/9] md:aspect-[2/1] overflow-hidden flex items-center justify-center group shadow-md">
+          <div className="relative aspect-[4/3] md:aspect-[2/1] overflow-hidden shadow-md group">
             <img 
               src={SERVICES_SLIDES[currentSlide].image} 
               alt={SERVICES_SLIDES[currentSlide].title} 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Overlapping Info Box */}
-            <div className="relative z-10 bg-[#EAEAEA]/95 p-8 md:p-12 md:mr-[30%] text-center backdrop-blur-sm">
-              <h3 className="font-serif text-3xl font-bold text-[#6E97B8] mb-8">{SERVICES_SLIDES[currentSlide].title}</h3>
-              <Button onClick={() => navigateTo('services')}>Learn More</Button>
-            </div>
           </div>
 
-          <button onClick={nextSlide} className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10">
+          {/* Overlapping Info Box - perfectly adapted for mobile */}
+          <div className="relative z-10 bg-[#EAEAEA]/95 p-8 md:p-12 text-center backdrop-blur-sm shadow-md mx-4 md:mx-0 -mt-16 md:mt-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-24 md:w-[45%] flex items-center justify-between md:justify-center">
+            <button onClick={prevSlide} className="md:hidden text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10"><ChevronLeft size={36} strokeWidth={1} /></button>
+            <div className="flex flex-col items-center">
+                <h3 className="font-serif text-[28px] md:text-3xl font-bold text-[#6E97B8] mb-6">{SERVICES_SLIDES[currentSlide].title}</h3>
+                <Button onClick={() => navigateTo('services')}>Learn More</Button>
+            </div>
+            <button onClick={nextSlide} className="md:hidden text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10"><ChevronRight size={36} strokeWidth={1} /></button>
+          </div>
+
+          <button onClick={nextSlide} className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10">
             <ChevronRight size={48} strokeWidth={1} />
           </button>
+
         </Reveal>
       </section>
 
@@ -283,57 +301,59 @@ const Home = ({ navigateTo }) => {
 };
 
 const About = ({ navigateTo }) => (
-  // About Page Background set to #D0D0D0
-  <div className="animate-fadeIn pb-24 overflow-hidden bg-[#D0D0D0]">
+  <div className="animate-fadeIn pb-32 overflow-hidden bg-[#D0D0D0]">
     {/* Title */}
     <div className="py-20 text-center">
       <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8]">Get to Know Me</h1></Reveal>
     </div>
 
-    {/* Bio Section */}
-    <div className="max-w-6xl mx-auto px-6 relative mb-24">
-      <div className="flex flex-col md:flex-row relative">
-          <Reveal className="w-full md:w-1/2 aspect-square md:aspect-[3/4] z-0 shadow-lg">
+    {/* Bio Section - Styled to match screenshot overlaps */}
+    <div className="max-w-5xl mx-auto px-6 relative mb-32">
+      <div className="flex flex-col md:flex-row items-center justify-center">
+          <Reveal className="w-full md:w-[50%] z-0">
                <img 
-                  src={`${BASE}bethany-foster-v3.png`} 
+                  src={`${BASE}about-page-image.jpg`} 
                   alt="Bethany Foster" 
-                  className="w-full h-full object-cover"
+                  className="w-full aspect-[4/5] object-cover shadow-md"
                 />
           </Reveal>
-          <Reveal delay={300} className="w-full md:w-1/2 md:absolute md:right-0 md:top-24 bg-[#EAEAEA] p-10 md:p-16 z-10 shadow-xl md:w-[60%]">
+          <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-ml-[8%] md:mt-[15%] shadow-lg">
               <div className="font-sans text-[16px] leading-[1.6] text-[#414141] space-y-6">
-                  <p>Hi I'm Bethany!</p>
-                  <p>I am a firm believer that massage therapy is key to maintaining physical and emotional balance to promote optimal health. I have been dedicated to the art of massage therapy and holistic healing for several years, and I am committed to providing personalized care to each of my clients.</p>
-                  <p>I am a wife and mother to 3 beautiful daughters. In my spare time, I can be found singing, exercising, and raising my young family.</p>
+                  <p>Hello, I'm Bethany! Welcome to my practice.</p>
+                  <p>I am a firm believer that massage therapy is a vital component in maintaining both physical and emotional balance for optimal health. Over the years, I have dedicated myself to the art of holistic healing and therapeutic massage, ensuring that every treatment is thoughtfully tailored to the unique needs of my clients.</p>
+                  <p>Outside of the clinic, I am a proud wife and a busy mother to four wonderful children—three girls and one boy. When I'm not in the treatment room, you can usually find me singing, exercising, and enjoying quality time raising my family.</p>
               </div>
           </Reveal>
       </div>
     </div>
 
     {/* Therapeutic Approach Title */}
-    <div className="py-24 text-center">
+    <div className="pt-12 pb-20 text-center">
       <Reveal><h2 className="font-serif text-4xl md:text-[52px] font-bold text-[#0A0A0A]">My Therapeutic<br/>Approach</h2></Reveal>
     </div>
 
-    {/* Approach Section */}
-    <div className="max-w-6xl mx-auto px-6 pb-24 relative flex flex-col-reverse md:flex-row">
-          <Reveal delay={300} className="w-full md:w-1/2 md:absolute md:left-0 md:-top-12 bg-[#EAEAEA] p-10 md:p-16 z-10 shadow-xl md:w-[60%] mt-8 md:mt-0">
+    {/* Approach Section - Styled to match screenshot overlaps */}
+    <div className="max-w-5xl mx-auto px-6 pb-24 relative mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <Reveal className="w-full md:w-[50%] z-0 md:mt-[15%] order-first md:order-last">
+               <img 
+                  src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                  alt="Spa Setting" 
+                  className="w-full aspect-[4/3] object-cover shadow-md"
+                />
+          </Reveal>
+          <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-mr-[8%] md:mt-0 shadow-lg relative order-last md:order-first">
               <div className="font-sans text-[16px] leading-[1.6] text-[#414141] space-y-6">
                   <p>My treatment style is rehabilitative, therapeutic massage with experience in deep tissue, sports massage, trigger point therapy, myofascial release, prenatal massage, chronic tension headaches, facial massage, lymphatic drainage, and other musculoskeletal traumas. I graduated from the Humber College Massage Therapy program in 2015 and practiced at a busy multidisciplinary clinic for many years.</p>
                   <p>In my practice, I blend various massage techniques to create a customized treatment plan that addresses your specific needs. Whether you're seeking relief from muscle tension, injury recovery, or simply want to relax and rejuvenate, I tailor each session to promote your overall well-being.</p>
               </div>
           </Reveal>
-          <Reveal className="w-full md:w-1/2 aspect-video md:aspect-[4/3] z-0 ml-auto shadow-lg">
-               <img 
-                  src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                  alt="Spa Setting" 
-                  className="w-full h-full object-cover"
-                />
-          </Reveal>
+        </div>
     </div>
 
-    <Reveal className="text-center pb-12">
-        <Button onClick={() => navigateTo('services')} className="bg-[#EAEAEA] text-[#6E97B8] border border-transparent hover:border-[#6E97B8]">
+    <Reveal className="text-center pb-12 mt-12">
+        {/* Changed button to use the default blue background like the rest */}
+        <Button onClick={() => navigateTo('services')}>
             Explore Services
         </Button>
     </Reveal>
@@ -341,10 +361,10 @@ const About = ({ navigateTo }) => (
 );
 
 const Services = () => (
-  <div className="animate-fadeIn pb-24 overflow-hidden bg-[#D0D0D0]">
-    {/* Hero-like Top Section */}
+  <div className="animate-fadeIn pb-24 overflow-hidden bg-[#FFFFFF]">
+    {/* Hero-like Top Section - Container background #D0D0D0 */}
     <div className="bg-[#D0D0D0] py-32 px-6 text-center text-[#414141]">
-      <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-8 drop-shadow-md">Therapeutic Approach</h1></Reveal>
+      <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-8 drop-shadow-sm">Therapeutic Approach</h1></Reveal>
       <Reveal delay={200}>
           <p className="max-w-3xl mx-auto font-sans text-[16px] leading-[1.6] text-[#414141] mb-12">
             Looking for a massage therapist who specializes in rehabilitative and therapeutic massage? Look no further! My treatment experience includes sports massage, trigger point therapy, myofascial release, prenatal massage, treatment for chronic tension headaches, facial massage, lymphatic drainage, cupping therapy, and more. I am here to help, book your appointment, and lets start your journey to wellness together!
@@ -366,7 +386,8 @@ const Services = () => (
       {/* 2-Column Grid with Horizontal Cards */}
       <div className="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-8 px-2 md:px-6 text-left">
          {DETAILED_SERVICES.map((srv, i) => (
-            <Reveal key={i} delay={i % 2 === 0 ? 0 : 200} className="bg-[#EAEAEA] flex flex-col xl:flex-row items-stretch shadow-md">
+            /* Service container is now exactly #D0D0D0 to match the Therapeutic Approach header */
+            <Reveal key={i} delay={i % 2 === 0 ? 0 : 200} className="bg-[#D0D0D0] flex flex-col xl:flex-row items-stretch shadow-sm">
                 {/* Image takes up half the card on large screens */}
                 <div className="w-full xl:w-1/2 h-64 xl:h-auto relative">
                     <img src={srv.image} alt={srv.title} className="absolute inset-0 w-full h-full object-cover" />
@@ -448,29 +469,42 @@ export default function App() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-12">
-          <nav className="flex gap-8 text-[13px] font-bold tracking-widest text-[#414141] uppercase">
-            <button onClick={() => navigateTo('home')} className={`hover:text-[#6E97B8] transition-colors ${currentPage === 'home' ? 'text-[#6E97B8]' : ''}`}>Home</button>
-            <button onClick={() => navigateTo('about')} className={`hover:text-[#6E97B8] transition-colors ${currentPage === 'about' ? 'text-[#6E97B8]' : ''}`}>About</button>
-            <button onClick={() => navigateTo('services')} className={`hover:text-[#6E97B8] transition-colors ${currentPage === 'services' ? 'text-[#0A0A0A] border-b-[2px] border-[#0A0A0A] pb-1' : ''}`}>Services</button>
-            <button onClick={() => navigateTo('contact')} className={`hover:text-[#6E97B8] transition-colors ${currentPage === 'contact' ? 'text-[#6E97B8]' : ''}`}>Contact</button>
+          <nav className="flex gap-8 text-[18px] font-normal tracking-widest text-[#6E97B8] uppercase font-sans">
+            <button onClick={() => navigateTo('home')} className={`hover:text-[#0A0A0A] transition-colors ${currentPage === 'home' ? 'text-[#0A0A0A]' : ''}`}>Home</button>
+            <button onClick={() => navigateTo('about')} className={`hover:text-[#0A0A0A] transition-colors ${currentPage === 'about' ? 'text-[#0A0A0A]' : ''}`}>About</button>
+            <button onClick={() => navigateTo('services')} className={`hover:text-[#0A0A0A] transition-colors ${currentPage === 'services' ? 'text-[#0A0A0A]' : ''}`}>Services</button>
+            <button onClick={() => navigateTo('contact')} className={`hover:text-[#0A0A0A] transition-colors ${currentPage === 'contact' ? 'text-[#0A0A0A]' : ''}`}>Contact</button>
           </nav>
           <Button href={BOOKING_LINK} className="py-2 px-6 text-[14px]">Book Online</Button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-[#414141]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-           {isMenuOpen ? <X size={24} /> : <div className="space-y-1"><div className="w-6 h-0.5 bg-[#0A0A0A]"></div><div className="w-6 h-0.5 bg-[#0A0A0A]"></div><div className="w-6 h-0.5 bg-[#0A0A0A]"></div></div>}
+        <button className="md:hidden text-[#414141] z-[70] p-1" onClick={() => setIsMenuOpen(true)}>
+           <div className="space-y-1.5">
+             <div className="w-7 h-[2px] bg-[#0A0A0A]"></div>
+             <div className="w-7 h-[2px] bg-[#0A0A0A]"></div>
+             <div className="w-7 h-[2px] bg-[#0A0A0A]"></div>
+           </div>
         </button>
       </header>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Global Book Online Button for Mobile - Only visible under header */}
+      <div className="md:hidden w-full bg-[#FFFFFF] px-6 py-4 border-b border-gray-100">
+         <Button href={BOOKING_LINK} className="w-full text-lg shadow-sm !py-4">Book Online</Button>
+      </div>
+
+      {/* Full-Screen Mobile Overlay Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white absolute top-[72px] left-0 right-0 z-40 border-b shadow-md py-4 px-6 flex flex-col gap-4">
-            <button onClick={() => navigateTo('home')} className="text-left text-[16px] font-bold uppercase tracking-widest text-[#414141]">Home</button>
-            <button onClick={() => navigateTo('about')} className="text-left text-[16px] font-bold uppercase tracking-widest text-[#414141]">About</button>
-            <button onClick={() => navigateTo('services')} className="text-left text-[16px] font-bold uppercase tracking-widest text-[#414141]">Services</button>
-            <button onClick={() => navigateTo('contact')} className="text-left text-[16px] font-bold uppercase tracking-widest text-[#414141]">Contact</button>
-            <Button href={BOOKING_LINK} className="w-full mt-4">Book Online</Button>
+        <div className="md:hidden fixed inset-0 bg-[#EAEAEA] z-[100] flex flex-col items-center justify-center animate-fadeIn">
+          <button className="absolute top-6 right-6 text-[#0A0A0A] p-2" onClick={() => setIsMenuOpen(false)}>
+            <X size={40} strokeWidth={1.5} />
+          </button>
+          <nav className="flex flex-col gap-10 text-[24px] font-sans font-bold tracking-[0.1em] text-[#6E97B8] uppercase">
+            <button onClick={() => navigateTo('home')} className={`transition-colors ${currentPage === 'home' ? 'text-[#0A0A0A]' : ''}`}>Home</button>
+            <button onClick={() => navigateTo('about')} className={`transition-colors ${currentPage === 'about' ? 'text-[#0A0A0A]' : ''}`}>About</button>
+            <button onClick={() => navigateTo('services')} className={`transition-colors ${currentPage === 'services' ? 'text-[#0A0A0A]' : ''}`}>Services</button>
+            <button onClick={() => navigateTo('contact')} className={`transition-colors ${currentPage === 'contact' ? 'text-[#0A0A0A]' : ''}`}>Contact</button>
+          </nav>
         </div>
       )}
 
