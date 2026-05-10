@@ -304,7 +304,7 @@ const About = ({ navigateTo }) => (
                <img 
                   src={`${BASE}about-page-image-v2.jpg`} 
                   alt="Bethany Foster" 
-                  className="w-full aspect-[4/5] object-cover shadow-md"
+                  className="w-full aspect-[3/4] object-cover shadow-md"
                 />
           </Reveal>
           <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-ml-[8%] md:mt-[15%] shadow-lg">
