@@ -193,7 +193,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v1.jpg`} 
+          src={`${BASE}home-page-v2.png`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
