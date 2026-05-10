@@ -223,6 +223,14 @@ const Home = ({ navigateTo }) => {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % SERVICES_SLIDES.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SERVICES_SLIDES.length) % SERVICES_SLIDES.length);
 
+  // Auto-scroll the carousel every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % SERVICES_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="animate-fadeIn">
       {/* Hero Section */}
@@ -232,7 +240,7 @@ const Home = ({ navigateTo }) => {
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Crisp Hero Overlay: Updated to #D0D0D0 at 20% opacity */}
+        {/* Crisp Hero Overlay */}
         <div className="absolute inset-0 bg-[#D0D0D0]/20 pointer-events-none"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-4">Relax, Restore, Renew</h1></Reveal>
@@ -241,7 +249,7 @@ const Home = ({ navigateTo }) => {
         </div>
       </section>
 
-      {/* Intro Section - Restructured for perfect mobile stacking */}
+      {/* Intro Section */}
       <section className="w-full bg-[#EAEAEA] pt-12 md:pt-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
           <Reveal className="w-full aspect-[3/4] overflow-hidden bg-gray-200">
@@ -269,7 +277,8 @@ const Home = ({ navigateTo }) => {
       <section className="bg-[#D0D0D0] py-24 text-center overflow-hidden">
         <Reveal><SectionTitle className="text-[#0A0A0A]">Services</SectionTitle></Reveal>
         
-        <Reveal delay={200} className="relative mx-auto w-full md:max-w-[1100px] px-4 mt-12 flex flex-col md:block">
+        {/* Added md:px-20 padding to provide ample space for the absolute arrows to live off the image */}
+        <Reveal delay={200} className="relative mx-auto w-full md:max-w-[1100px] px-4 md:px-20 mt-12 flex flex-col md:block">
           
           <button onClick={prevSlide} className="hidden md:block absolute left-0 md:left-4 top-1/2 -translate-y-1/2 text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-20">
             <ChevronLeft size={48} strokeWidth={1} />
@@ -284,7 +293,7 @@ const Home = ({ navigateTo }) => {
             />
           </div>
 
-          {/* Overlapping Info Box - shifted to barely overlap on the left */}
+          {/* Overlapping Info Box */}
           <div className="relative z-10 bg-[#EAEAEA]/95 p-8 md:p-12 text-center backdrop-blur-sm shadow-md mx-4 md:mx-0 -mt-16 md:mt-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:left-12 lg:left-24 md:w-[45%] lg:w-[40%] flex items-center justify-between md:justify-center">
             <button onClick={prevSlide} className="md:hidden text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10"><ChevronLeft size={36} strokeWidth={1} /></button>
             <div className="flex flex-col items-center w-full px-2">
@@ -332,7 +341,7 @@ const About = ({ navigateTo }) => (
       <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8]">Get to Know Me</h1></Reveal>
     </div>
 
-    {/* Bio Section - Styled to match screenshot overlaps */}
+    {/* Bio Section */}
     <div className="max-w-5xl mx-auto px-6 relative mb-32">
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
@@ -357,7 +366,7 @@ const About = ({ navigateTo }) => (
       <Reveal><h2 className="font-serif text-4xl md:text-[52px] font-bold text-[#0A0A0A]">My Therapeutic<br/>Approach</h2></Reveal>
     </div>
 
-    {/* Approach Section - Styled to match screenshot overlaps */}
+    {/* Approach Section */}
     <div className="max-w-5xl mx-auto px-6 pb-24 relative mb-12">
         <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0 md:mt-[15%] order-first md:order-last">
@@ -386,7 +395,7 @@ const About = ({ navigateTo }) => (
 
 const Services = () => (
   <div className="animate-fadeIn pb-24 overflow-hidden bg-[#D0D0D0]">
-    {/* Hero-like Top Section - Container background #D0D0D0 */}
+    {/* Hero-like Top Section */}
     <div className="bg-[#D0D0D0] pt-32 pb-16 px-6 text-center text-[#414141]">
       <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-8 drop-shadow-sm">Therapeutic Approach</h1></Reveal>
       <Reveal delay={200}>
@@ -399,19 +408,13 @@ const Services = () => (
 
     {/* Services List Area */}
     <div className="bg-[#D0D0D0] py-16 md:py-24 text-center px-4">
-      <Reveal><h2 className="font-serif text-5xl md:text-[52px] font-bold text-[#6E97B8] mb-8">Services</h2></Reveal>
-      <Reveal delay={200}>
-          <p className="font-serif text-xl text-[#0A0A0A] max-w-2xl mx-auto mb-24 leading-relaxed">
-            Please Note: Fees for RMT service have been updated as of November 13th, 2025<br/>
-            Thank you for your continued support!
-          </p>
-      </Reveal>
+      <Reveal><h2 className="font-serif text-5xl md:text-[52px] font-bold text-[#6E97B8] mb-16 md:mb-24">Services</h2></Reveal>
 
       {/* Single Column Stacked Layout */}
       <div className="max-w-6xl mx-auto flex flex-col gap-24 px-2 md:px-6">
          {DETAILED_SERVICES.map((srv, i) => (
             <Reveal key={i} delay={200} className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
-                {/* Image top left (full image, no strict crop) */}
+                {/* Image top left */}
                 <div className="w-full md:w-1/2">
                     <img src={srv.image} alt={srv.title} className="w-full h-auto object-contain" />
                 </div>
@@ -443,11 +446,93 @@ const Contact = () => (
   </div>
 );
 
+// --- SEO Hook ---
+const useSEO = (currentPage) => {
+  // Update Title and Meta Tags on page change
+  useEffect(() => {
+    const seoData = {
+      home: {
+        title: "Bethany Foster RMT | Registered Massage Therapist in Guelph",
+        description: "Bethany Foster is a Registered Massage Therapist offering therapeutic, deep tissue, and relaxation massage services to help you achieve optimal health."
+      },
+      about: {
+        title: "About | Bethany Foster RMT",
+        description: "Learn more about Bethany Foster, a dedicated Registered Massage Therapist with years of experience in rehabilitative and therapeutic massage."
+      },
+      services: {
+        title: "Massage Therapy Services & Pricing | Bethany Foster RMT",
+        description: "Explore our massage therapy services including deep tissue, cupping therapy, and facial massage. View pricing and book your appointment online."
+      },
+      contact: {
+        title: "Contact | Bethany Foster RMT",
+        description: "Get in touch with Bethany Foster RMT. Contact us to schedule a massage therapy session or ask any questions about our treatments."
+      }
+    };
+
+    const { title, description } = seoData[currentPage] || seoData.home;
+
+    // Update Document Title
+    document.title = title;
+
+    // Update Meta Description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = "description";
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = description;
+
+    // Update Open Graph Title (for social sharing)
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.content = title;
+
+  }, [currentPage]);
+
+  // Inject Local Business Schema (JSON-LD) for Search Engines
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "Bethany Foster RMT",
+      "image": `${window.location.origin}${BASE}bethany-logo-v2.jpg`,
+      "@id": window.location.origin,
+      "url": window.location.origin,
+      "telephone": "519-822-7075",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guelph",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "description": "Registered Massage Therapist providing rehabilitative, therapeutic, and relaxation massage.",
+      "priceRange": "$$"
+    };
+
+    let script = document.querySelector('#seo-schema');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'seo-schema';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.text = JSON.stringify(schema);
+  }, []);
+};
+
 // --- Main Application Component ---
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Initialize SEO
+  useSEO(currentPage);
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -511,7 +596,7 @@ export default function App() {
         </button>
       </header>
 
-      {/* Global Book Online Button for Mobile - Only visible under header */}
+      {/* Global Book Online Button for Mobile */}
       <div className="md:hidden w-full bg-[#FFFFFF] px-6 py-4 border-b border-gray-100 flex justify-center">
          <Button href={BOOKING_LINK} className="w-auto px-12 py-3 shadow-sm">Book Online</Button>
       </div>
@@ -551,7 +636,6 @@ export default function App() {
                 </div>
             </div>
             
-            {/* Increased gap between icons and bumped size significantly to 44. Thinner strokeWidth for lighter appearance. */}
             <div className="flex items-center gap-10 text-[#0A0A0A] mb-2">
                 <a href={REVIEW_LINK} target="_blank" rel="noopener noreferrer" aria-label="Google Review">
                     <ReviewIcon size={44} strokeWidth={1} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
