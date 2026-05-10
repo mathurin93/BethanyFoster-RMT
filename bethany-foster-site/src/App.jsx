@@ -204,7 +204,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v1.png`} 
+          src={`${BASE}home-page-v3.png`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -312,7 +312,7 @@ const About = ({ navigateTo }) => (
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
                <img 
-                  src={`${BASE}bethany-profile-v4.png`} 
+                  src={`${BASE}about-page-image-v1.jpg`} 
                   alt="Bethany Foster" 
                   className="w-full aspect-[3/4] object-cover object-top shadow-md"
                 />
