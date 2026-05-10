@@ -194,7 +194,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v1.png`} 
+          src={`${BASE}home-page-v4.png`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -212,7 +212,7 @@ const Home = ({ navigateTo }) => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
           <Reveal className="w-full aspect-[4/5] overflow-hidden bg-gray-200">
             <img 
-              src={`${BASE}bethany-profile-v4.png`} 
+              src={`${BASE}bethany-profile-v6.png`} 
               alt="Bethany Foster" 
               className="w-full h-full object-cover object-top"
             />
@@ -302,7 +302,7 @@ const About = ({ navigateTo }) => (
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
                <img 
-                  src={`${BASE}about-page-image.jpg`} 
+                  src={`${BASE}about-page-image-v2.jpg`} 
                   alt="Bethany Foster" 
                   className="w-full aspect-[4/5] object-cover shadow-md"
                 />
