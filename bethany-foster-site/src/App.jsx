@@ -1,7 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, MessageSquare, MapPin, Mail, Phone, Star, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageSquare, MapPin, Mail, Phone, X } from 'lucide-react';
 
 // --- Custom Icons ---
+const ReviewIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {/* Speech Bubble */}
+    <path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8.5l-2 3v-3H4a2 2 0 0 1-2-2V5z" />
+    {/* Stars */}
+    <polygon points="7,6.5 7.4,7.6 8.5,7.6 7.6,8.4 7.9,9.5 7,8.9 6.1,9.5 6.4,8.4 5.5,7.6 6.6,7.6" />
+    <polygon points="12,6.5 12.4,7.6 13.5,7.6 12.6,8.4 12.9,9.5 12,8.9 11.1,9.5 11.4,8.4 10.5,7.6 11.6,7.6" />
+    <polygon points="17,6.5 17.4,7.6 18.5,7.6 17.6,8.4 17.9,9.5 17,8.9 16.1,9.5 16.4,8.4 15.5,7.6 16.6,7.6" />
+    {/* Person */}
+    <circle cx="6.5" cy="18.5" r="4" />
+    <circle cx="6.5" cy="16.5" r="1.25" />
+    <path d="M4 21a2.5 2.5 0 0 1 5 0" />
+    {/* Lines */}
+    <line x1="12.5" y1="16" x2="21" y2="16" />
+    <line x1="12.5" y1="18.5" x2="21" y2="18.5" />
+    <line x1="12.5" y1="21" x2="21" y2="21" />
+  </svg>
+);
+
 const InstagramIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +240,8 @@ const Home = ({ navigateTo }) => {
       {/* Intro Section - Restructured for perfect mobile stacking */}
       <section className="w-full bg-[#EAEAEA] pt-12 md:pt-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
-          <Reveal className="w-full aspect-[4/5] overflow-hidden bg-gray-200">
+          {/* Changed aspect-[4/5] to aspect-[3/4] to make the home page image taller */}
+          <Reveal className="w-full aspect-[3/4] overflow-hidden bg-gray-200">
             <img 
               src={`${BASE}bethany-profile-v6.png`} 
               alt="Bethany Foster" 
@@ -301,10 +332,11 @@ const About = ({ navigateTo }) => (
     <div className="max-w-5xl mx-auto px-6 relative mb-32">
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
+               {/* Changed aspect-[3/4] to aspect-[2/3] to make the about page image much taller */}
                <img 
                   src={`${BASE}about-page-image-v2.jpg`} 
                   alt="Bethany Foster" 
-                  className="w-full aspect-[3/4] object-cover shadow-md"
+                  className="w-full aspect-[2/3] object-cover object-top shadow-md"
                 />
           </Reveal>
           <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-ml-[8%] md:mt-[15%] shadow-lg">
@@ -516,15 +548,16 @@ export default function App() {
                 </div>
             </div>
             
-            <div className="flex items-center gap-6 text-[#0A0A0A] mb-2">
+            {/* Increased gap between icons and bumped size significantly to 44. Thinner strokeWidth for lighter appearance. */}
+            <div className="flex items-center gap-10 text-[#0A0A0A] mb-2">
                 <a href={REVIEW_LINK} target="_blank" rel="noopener noreferrer" aria-label="Google Review">
-                    <Star size={22} strokeWidth={1.5} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
+                    <ReviewIcon size={44} strokeWidth={1} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
                 </a>
                 <a href={LOCATION_LINK} target="_blank" rel="noopener noreferrer" aria-label="Location">
-                    <MapPin size={22} strokeWidth={1.5} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
+                    <MapPin size={44} strokeWidth={1} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
                 </a>
                 <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <InstagramIcon size={20} strokeWidth={1.5} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
+                    <InstagramIcon size={44} strokeWidth={1} className="cursor-pointer hover:text-[#6E97B8] transition-colors" />
                 </a>
             </div>
 
