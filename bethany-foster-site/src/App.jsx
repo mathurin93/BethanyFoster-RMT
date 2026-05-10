@@ -204,7 +204,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v1.jpg`} 
+          src={`${BASE}home-page-v1.png`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -222,9 +222,9 @@ const Home = ({ navigateTo }) => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
           <Reveal className="w-full aspect-[4/5] overflow-hidden bg-gray-200">
             <img 
-              src={`${BASE}bethany-foster-v4.png`} 
+              src={`${BASE}bethany-profile-v5.png`} 
               alt="Bethany Foster" 
-              className="w-full h-full object-cover object-top md:object-bottom"
+              className="w-full h-full object-cover object-top"
             />
           </Reveal>
           <div className="w-full pb-12 md:pb-24">
@@ -312,9 +312,9 @@ const About = ({ navigateTo }) => (
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
                <img 
-                  src={`${BASE}about-page-image.jpg`} 
+                  src={`${BASE}bethany-profile-v4.png`} 
                   alt="Bethany Foster" 
-                  className="w-full aspect-[4/5] object-cover shadow-md"
+                  className="w-full aspect-[3/4] object-cover object-top shadow-md"
                 />
           </Reveal>
           <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-ml-[8%] md:mt-[15%] shadow-lg">
