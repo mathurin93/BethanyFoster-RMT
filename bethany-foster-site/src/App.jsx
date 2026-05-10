@@ -244,7 +244,6 @@ const Home = ({ navigateTo }) => {
       {/* Intro Section - Restructured for perfect mobile stacking */}
       <section className="w-full bg-[#EAEAEA] pt-12 md:pt-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
-          {/* Changed aspect-[4/5] to aspect-[3/4] to make the home page image taller */}
           <Reveal className="w-full aspect-[3/4] overflow-hidden bg-gray-200">
             <img 
               src={`${BASE}bethany-profile-v6.png`} 
@@ -276,16 +275,16 @@ const Home = ({ navigateTo }) => {
             <ChevronLeft size={48} strokeWidth={1} />
           </button>
           
-          <div className="relative aspect-[4/3] md:aspect-[2/1] overflow-hidden shadow-md group">
+          <div className="relative aspect-[4/3] md:aspect-[16/9] overflow-hidden shadow-md group bg-[#EAEAEA]">
             <img 
               src={SERVICES_SLIDES[currentSlide].image} 
               alt={SERVICES_SLIDES[currentSlide].title} 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
             />
           </div>
 
           {/* Overlapping Info Box - perfectly adapted for mobile */}
-          <div className="relative z-10 bg-[#EAEAEA]/95 p-8 md:p-12 text-center backdrop-blur-sm shadow-md mx-4 md:mx-0 -mt-16 md:mt-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-24 md:w-[45%] flex items-center justify-between md:justify-center">
+          <div className="relative z-10 bg-[#EAEAEA]/95 p-8 md:p-12 text-center backdrop-blur-sm shadow-md mx-4 md:mx-0 -mt-16 md:mt-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:left-12 lg:left-24 md:w-[45%] flex items-center justify-between md:justify-center">
             <button onClick={prevSlide} className="md:hidden text-[#6E97B8] hover:text-[#0A0A0A] transition-colors z-10"><ChevronLeft size={36} strokeWidth={1} /></button>
             <div className="flex flex-col items-center">
                 <h3 className="font-serif text-[28px] md:text-3xl font-bold text-[#6E97B8] mb-6">{SERVICES_SLIDES[currentSlide].title}</h3>
@@ -336,7 +335,6 @@ const About = ({ navigateTo }) => (
     <div className="max-w-5xl mx-auto px-6 relative mb-32">
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
-               {/* Changed aspect-[3/4] to aspect-[2/3] to make the about page image much taller */}
                <img 
                   src={`${BASE}about-page-image-v2.jpg`} 
                   alt="Bethany Foster" 
@@ -362,10 +360,11 @@ const About = ({ navigateTo }) => (
     <div className="max-w-5xl mx-auto px-6 pb-24 relative mb-12">
         <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0 md:mt-[15%] order-first md:order-last">
+               {/* Changed aspect-[4/3] to aspect-[3/4] to make the image taller */}
                <img 
                   src={`${BASE}massage.png`} 
                   alt="Spa Setting" 
-                  className="w-full aspect-[4/3] object-cover shadow-md"
+                  className="w-full aspect-[3/4] object-cover shadow-md"
                 />
           </Reveal>
           <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-mr-[8%] md:mt-0 shadow-lg relative order-last md:order-first">
