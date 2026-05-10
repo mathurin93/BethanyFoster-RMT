@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, MessageSquare, MapPin, Mail, Phone, Star, X } from 'lucide-react';
 
 // --- Custom Icons ---
-// Using an inline SVG for Instagram to bypass lucide-react import errors
+// Using an inline SVG for Instagram to bypass package import errors
 const InstagramIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +27,9 @@ const BOOKING_LINK = "https://bethanyfosterrmt.janeapp.com/#staff_member/1";
 const LOCATION_LINK = "https://google.com/maps/place//data=!4m3!3m2!1s0x882b9b7fc5f8458b:0xf93f86edecd13ad!12e1?source=g.page.m.kd._&laa=lu-desktop-review-solicitation";
 const REVIEW_LINK = "https://g.page/r/Ca0Tzd5u-JMPEAE/review";
 const INSTAGRAM_LINK = "https://www.instagram.com/bfoster_rmt/";
+
+// Hardcoded Base URL to fix "import.meta" errors and ensure GitHub Pages compatibility
+const BASE = "/BethanyFoster-RMT/";
 
 const SERVICES_SLIDES = [
   {
@@ -212,7 +215,7 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#e8e8e8]">
         <img 
-          src="/home-page.jpg" 
+          src={`${BASE}home-page.jpg`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -229,9 +232,8 @@ const Home = ({ navigateTo }) => {
       <section className="max-w-6xl mx-auto py-24 px-6 overflow-hidden">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <Reveal className="aspect-[4/5] overflow-hidden bg-gray-200">
-            {/* Replaced unsplash placeholder with local bio photo path */}
             <img 
-              src="/bethany-profile.png" 
+              src={`${BASE}bethany-profile.png`} 
               alt="Bethany Foster" 
               className="w-full h-full object-cover"
             />
@@ -313,9 +315,8 @@ const About = ({ navigateTo }) => (
     <div className="max-w-6xl mx-auto px-6 relative mb-24">
       <div className="flex flex-col md:flex-row relative">
           <Reveal className="w-full md:w-1/2 aspect-square md:aspect-[3/4] z-0">
-               {/* Replaced unsplash placeholder with local bio photo path */}
                <img 
-                  src="/bethany-profile.png" 
+                  src={`${BASE}bethany-profile.png`} 
                   alt="Bethany Foster" 
                   className="w-full h-full object-cover"
                 />
