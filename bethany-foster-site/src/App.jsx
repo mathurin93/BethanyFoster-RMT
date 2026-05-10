@@ -27,7 +27,8 @@ const LOCATION_LINK = "https://google.com/maps/place//data=!4m3!3m2!1s0x882b9b7f
 const REVIEW_LINK = "https://g.page/r/Ca0Tzd5u-JMPEAE/review";
 const INSTAGRAM_LINK = "https://www.instagram.com/bfoster_rmt/";
 
-const BASE = "/BethanyFoster-RMT/";
+// Dynamic Base URL to ensure images load both locally (npm run dev) and on GitHub Pages
+const BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? '/' : '/BethanyFoster-RMT/';
 
 const SERVICES_SLIDES = [
   {
@@ -70,17 +71,6 @@ const DETAILED_SERVICES = [
     title: "Facial Massage Therapy",
     image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     description: "Facial massage therapy uses gentle pressure that manipulates the facial muscles to enhance circulation, reduce tension, and promote deep relaxation. Great for TMJ and Headaches.",
-    pricing: [
-      "30 minutes",
-      "45 minutes",
-      "60 minutes",
-      "An additional $10 per treatment"
-    ]
-  },
-  {
-    title: "Indie Head Massage Therapy",
-    image: "https://images.unsplash.com/photo-1544161514-3a2512fcefb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Indie head massage therapy is an ancient practice used across cultures for thousands of years. By applying gentle pressure and manipulating the muscles and tissues of the head, neck, and shoulders, this massage enhances circulation and promotes natural healing.",
     pricing: [
       "30 minutes",
       "45 minutes",
@@ -204,12 +194,12 @@ const Home = ({ navigateTo }) => {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full max-w-[1400px] mx-auto overflow-hidden bg-[#FFFFFF]">
         <img 
-          src={`${BASE}home-page-v3.png`} 
+          src={`${BASE}home-page-v1.png`} 
           alt="Massage table setup" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Crisp Hero Overlay: Increased opacity to 70%, removed blur-causing drop-shadows */}
-        <div className="absolute inset-0 bg-white/70 pointer-events-none"></div>
+        {/* Crisp Hero Overlay: Updated to #D0D0D0 at 20% opacity */}
+        <div className="absolute inset-0 bg-[#D0D0D0]/20 pointer-events-none"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <Reveal><h1 className="font-serif text-5xl md:text-[64px] font-bold text-[#6E97B8] mb-4">Relax, Restore, Renew</h1></Reveal>
           <Reveal delay={200}><p className="text-[#6E97B8] tracking-[0.2em] text-[16px] uppercase mb-8 font-bold">Bethany Foster RMT</p></Reveal>
@@ -222,7 +212,7 @@ const Home = ({ navigateTo }) => {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-end">
           <Reveal className="w-full aspect-[4/5] overflow-hidden bg-gray-200">
             <img 
-              src={`${BASE}bethany-profile-v5.png`} 
+              src={`${BASE}bethany-profile-v4.png`} 
               alt="Bethany Foster" 
               className="w-full h-full object-cover object-top"
             />
@@ -312,9 +302,9 @@ const About = ({ navigateTo }) => (
       <div className="flex flex-col md:flex-row items-center justify-center">
           <Reveal className="w-full md:w-[50%] z-0">
                <img 
-                  src={`${BASE}about-page-image-v1.jpg`} 
+                  src={`${BASE}about-page-image.jpg`} 
                   alt="Bethany Foster" 
-                  className="w-full aspect-[3/4] object-cover object-top shadow-md"
+                  className="w-full aspect-[4/5] object-cover shadow-md"
                 />
           </Reveal>
           <Reveal delay={300} className="w-full md:w-[50%] bg-[#EAEAEA] p-10 md:p-14 z-10 -mt-12 md:-ml-[8%] md:mt-[15%] shadow-lg">
@@ -352,7 +342,6 @@ const About = ({ navigateTo }) => (
     </div>
 
     <Reveal className="text-center pb-12 mt-12">
-        {/* Changed button to use the default blue background like the rest */}
         <Button onClick={() => navigateTo('services')}>
             Explore Services
         </Button>
@@ -386,7 +375,6 @@ const Services = () => (
       {/* 2-Column Grid with Horizontal Cards */}
       <div className="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-8 px-2 md:px-6 text-left">
          {DETAILED_SERVICES.map((srv, i) => (
-            /* Service container is now exactly #D0D0D0 to match the Therapeutic Approach header */
             <Reveal key={i} delay={i % 2 === 0 ? 0 : 200} className="bg-[#D0D0D0] flex flex-col xl:flex-row items-stretch shadow-sm">
                 {/* Image takes up half the card on large screens */}
                 <div className="w-full xl:w-1/2 h-64 xl:h-auto relative">
@@ -489,8 +477,8 @@ export default function App() {
       </header>
 
       {/* Global Book Online Button for Mobile - Only visible under header */}
-      <div className="md:hidden w-full bg-[#FFFFFF] px-6 py-4 border-b border-gray-100">
-         <Button href={BOOKING_LINK} className="w-full text-lg shadow-sm !py-4">Book Online</Button>
+      <div className="md:hidden w-full bg-[#FFFFFF] px-6 py-4 border-b border-gray-100 flex justify-center">
+         <Button href={BOOKING_LINK} className="w-auto px-12 py-3 shadow-sm">Book Online</Button>
       </div>
 
       {/* Full-Screen Mobile Overlay Menu */}
